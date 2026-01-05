@@ -3,18 +3,14 @@ function login(){
   const user = document.getElementById('username').value;
   const pass = document.getElementById('password').value;
 
-  if(id==='AOA-001' && user==='ali01' && pass==='12345'){
-    // Store data in localStorage
-    const studentData = {
-      id: id,
-      name: user,
-      password: pass,
-      notes: 'notes.pdf',
-      videos: 'video.mp4'
-    };
-    localStorage.setItem('studentData', JSON.stringify(studentData));
+  // Check if student exists
+  const student = admittedStudents.find(s => s.id === id && s.name === user && s.password === pass);
+
+  if(student){
+    // Store in localStorage for dashboard
+    localStorage.setItem('studentData', JSON.stringify(student));
     window.location.href = 'dashboard.html';
   } else {
-    alert('Invalid credentials');
+    alert('❌ Invalid credentials or admission not confirmed yet.');
   }
 }
