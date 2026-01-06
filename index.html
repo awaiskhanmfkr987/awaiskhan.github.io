@@ -1,51 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Student Login</title>
-<style>
-body{font-family:Arial;background:#f4f6f8}
-.box{max-width:400px;margin:100px auto;background:#fff;padding:30px;border-radius:10px}
-input,button{width:100%;padding:12px;margin:10px 0}
-button{background:#1e3c72;color:white;border:none}
-</style>
+  <meta charset="UTF-8">
+  <title>ASK Online Academy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background: #f4f6f9;
+    }
+    header {
+      background: #0d6efd;
+      color: white;
+      padding: 30px 10px;
+    }
+    section {
+      padding: 30px;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 25px;
+      background: #198754;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 18px;
+    }
+    footer {
+      background: #222;
+      color: #aaa;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
 
-<div class="box">
-  <h2>Student Login</h2>
-  <input id="studentId" placeholder="Student ID">
-  <input id="username" placeholder="Student Name">
-  <input id="password" type="password" placeholder="Password">
-  <button onclick="login()">Login</button>
-</div>
+<header>
+  <h1>ASK Online Academy</h1>
+  <p>Quality Online Education</p>
+</header>
 
-<script>
-let admittedStudents = [];
+<section>
+  <h2>Admissions Open</h2>
+  <p>Apply now for online classes and confirm your admission.</p>
 
-fetch("PASTE_YOUR_EXEC_URL_HERE")
-  .then(res => res.json())
-  .then(data => admittedStudents = data)
-  .catch(() => alert("Connection failed"));
+  <a class="button" href="login.html">Student Login</a>
+</section>
 
-function login(){
-  const id = studentId.value.trim();
-  const name = username.value.trim();
-  const pass = password.value.trim();
-
-  const student = admittedStudents.find(s =>
-    s.id === id &&
-    s.name.toLowerCase() === name.toLowerCase() &&
-    s.password === pass
-  );
-
-  if(student){
-    localStorage.setItem("studentData", JSON.stringify(student));
-    window.location.href="dashboard.html";
-  } else {
-    alert("Invalid credentials or not confirmed");
-  }
-}
-</script>
+<footer>
+  © 2026 ASK Online Academy
+</footer>
 
 </body>
 </html>
